@@ -1,14 +1,23 @@
+// import external modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+// import all components
 import { AppComponent } from './app.component';
+import { ProductListComponent } from './products/product-list.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+		// list of components
+    AppComponent,
+		ProductListComponent
   ],
+	// list of imported modules
   imports: [
-    BrowserModule
+    BrowserModule,
+		FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
