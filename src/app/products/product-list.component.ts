@@ -81,6 +81,12 @@ export class ProductListComponent implements OnInit {
 		this.filteredProducts = this.products;
 		this.listFilter = 'cart';
 	}
+    
+    // rating clicked event
+    onRatingClicked(message: string): void {
+        // pass message from onclick star rating into page title
+        this.pageTitle = 'Product List: ' + message;
+    }
 
 	// list sorting function
 	performFilter(filterBy: string): IProduct[] {

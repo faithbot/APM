@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		{{pageTitle | uppercase }}
+		{{pageTitle }}
 	</div>
 </div>
 
@@ -49,7 +49,8 @@
 					<td>{{ product.releaseDate }}</td>
 					<td>{{ product.price | currency:'USD':true:'1.2-2' }}</td>
 					<td>
-						<pm-star [rating]="product.starRating"></pm-star>
+						<pm-star [rating]="product.starRating"
+                                 (ratingClicked)="onRatingClicked($event)"></pm-star>
 					</td>
 				</tr>
 			</tbody>
