@@ -1,5 +1,5 @@
 // list of angular components component, lifecycle hooks
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 
 // custom product type definition
 import { IProduct } from "./product";
