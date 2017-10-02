@@ -1,5 +1,9 @@
-import { Component } from "@angular/core";
+// list of angular components component, lifecycle hooks
+import { Component, OnInit } from "@angular/core";
+
+// custom product type definition
 import { IProduct } from "./product";
+
 
 @Component({
 	selector: "pm-products",
@@ -7,14 +11,28 @@ import { IProduct } from "./product";
 	styleUrls: ["./product-list.component.css"]
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
 	// properties
 	pageTitle: string = "Product List";
 	imageWidth: number = 50;
 	imageMargin: number = 2;
 	showImage: boolean = false;
-	listFilter: string = "cart";
-	products: any[] = [
+	
+	// get and set list filter value as user input
+	_listFilter: string;
+	get listFilter(): string {
+		return this._listFilter;
+	}
+	set listFilter(value: string) {
+		this._listFilter = value;
+		// set as all products, or filter products
+		this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+	}
+	
+	// create new array for filtered products
+	filteredProducts: IProduct[];
+	
+	products: IProduct[] = [
 		    {
         "productId": 1,
         "productName": "Leaf Rake",
@@ -56,9 +74,33 @@ export class ProductListComponent {
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
     }
 	];
+
+
+	// set defaults for filtering
+	constructor() {
+		this.filteredProducts = this.products;
+		this.listFilter = 'cart';
+	}
+
+	// list sorting function
+	performFilter(filterBy: string): IProduct[] {
+		// change filter to lowercase
+		filterBy = filterBy.toLocaleLowerCase();
+		
+		// return filtered list of products
+		return this.products.filter(
+			(product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
+		);
+	}
+
 	// methods (put after properties are defined)
 	// typescript doesn't require function keyword
 	toggleImage(): void {
 		this.showImage = !this.showImage;
+	}
+	
+	// must use OnInit once, each import must be used or cause an error
+	ngOnInit(): void {
+		console.log("In OnInit");
 	}
 }

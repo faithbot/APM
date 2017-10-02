@@ -6,13 +6,17 @@ import { FormsModule } from '@angular/forms';
 // import all components
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { StarComponent } from "./shared/star.component";
 
 
 @NgModule({
   declarations: [
 		// list of components
     AppComponent,
-		ProductListComponent
+		ProductListComponent,
+		ConvertToSpacesPipe,
+		StarComponent
   ],
 	// list of imported modules
   imports: [
