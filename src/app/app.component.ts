@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'app/products/product.service';
 
 @Component({
 	// used as a new html tag
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 	
 	`,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+	providers: [ ProductService ]
 })
 
 export class AppComponent {
